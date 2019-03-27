@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
-from todoapp.ru_taggit import RuTaggedItem
+#from todoapp.ru_taggit import RuTaggedItem
 
 class TodoItem(models.Model):
     PRIORITY_HIGH = 1
