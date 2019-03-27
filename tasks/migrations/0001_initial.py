@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('taggit', '0006_rutag_rutaggeditem'),
+        ('taggit'),
     ]
 
     operations = [
