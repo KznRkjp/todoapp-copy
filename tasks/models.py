@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
-from todoapp.ru_taggit import RuTaggedItem
+#from todoapp.ru_taggit import RuTaggedItem
 
 class TodoItem(models.Model):
     PRIORITY_HIGH = 1
@@ -25,8 +25,8 @@ class TodoItem(models.Model):
     priority = models.IntegerField(
         "Приоритет", choices=PRIORITY_CHOICES, default=PRIORITY_MEDIUM
     )
-    tags = TaggableManager(through=RuTaggedItem)
-    #tags = TaggableManager()
+    #tags = TaggableManager(through=RuTaggedItem)
+    tags = TaggableManager()
     trello_id = models.CharField(max_length=64, null=True, blank=True)
     trello_board_id = models.CharField(max_length=64, null=True, blank=True)
 
