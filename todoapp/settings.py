@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+
+
+sentry_sdk.init(
+    dsn = str(os.environ.get('DSN')),
+    integrations=[DjangoIntegration()]
+)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,6 +52,7 @@ SERVER_EMAIL = str(os.environ.get('EMAIL_HOST_USER'))
 
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -58,7 +68,7 @@ INSTALLED_APPS = [
     'taggit',
     'tasks.templatetags.custom_tags',
     'trello',
-    
+
 
 
 ]
