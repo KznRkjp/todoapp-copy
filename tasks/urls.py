@@ -23,5 +23,6 @@ urlpatterns = [
     path("edit/<int:pk>", views.TaskEditView.as_view(), name="edit"),
     path("export/", views.TaskExportView.as_view(), name="export"),
     path("import/", views.tasks_import, name="import"),
+    path("api-error/", views.api_error, name="api-error"),
     #path("import2/", views.tasks_import2, name="import2"),
 ]
