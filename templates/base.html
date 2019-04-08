@@ -28,7 +28,7 @@
                 <a class="nav-link" href="{% url "tasks:create" %}">Добавить задачу</a>
                 <a class="nav-link" href="{% url "tasks:list" %}">Задачи <span class="badge badge-danger">{%not_completed user.tasks.all%}</span>/<span class="badge badge-warning">{{user.tasks.count}}</span></a>
                 <a class="nav-link" href="{% url "tasks:import" %}">Импорт</a>
-                <a class="nav-link" href="{% url "api-error" %}">Получить ошибку</a>
+                <a class="nav-link" href="{% url "tasks:api_error" %}">Получить ошибку</a>
                 <a class="nav-link" href="{% url "logout" %}">Выйти</a>
               </nav>
 
