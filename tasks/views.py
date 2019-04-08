@@ -60,10 +60,10 @@ def uncomplete_task_trello(task, owner):
     board = client.get_board(task.trello_board_id)
     card.change_list(board.list_lists()[0].id)
 
-def api_error():
+def api_error(request):
     1/0
 
-    
+
 def add_task(request):
     if request.method == "POST":
         desc = request.POST["description"]
