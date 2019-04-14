@@ -16,11 +16,46 @@ from django.conf import settings
 from taggit.models import Tag, TaggedItem
 from trello import TrelloClient
 from accounts.models import Profile
+from django.db.models import Count
 
 
 @login_required
 def index(request):
-    return HttpResponse("Примитивный ответ из приложения tasks")
+    counts = Tag.objects.annotate(
+        total_tasks=Count('todoitem')
+    ).order_by("-total_tasks")
+
+    counts = {
+        c.name: c.total_tasks
+        for c in counts
+    }
+
+
+    p_counts = {
+        t.get_priority_display(): TodoItem.objects.filter(priority=t.priority).count()
+        for t in TodoItem.objects.all()
+    }
+
+    #print (p_counts)
+
+
+    # qs = TodoItem.objects.values_list("priority")
+    # counts1 = Count(qs)
+    # print (counts1)
+    #
+    # counts1 = TodoItem.objects.annotate(
+    #      total_priorities=Count('priority')
+    #  )
+    # print(counts1)
+    # print(58*"*")
+    # counts1 = {
+    #     c.get_priority_display(): c.total_priorities
+    #     for c in counts1
+    # }
+    # print(counts1)
+
+
+    return render(request, "tasks/index.html", {"counts": counts, "p_counts": p_counts})
 
 
 

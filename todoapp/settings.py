@@ -18,7 +18,8 @@ from sentry_sdk.integrations.django import DjangoIntegration
 
 
 sentry_sdk.init(
-    dsn = str(os.environ.get('DSN')),
+    dsn = "https://1f307140b37e44c7988c75f6c4e8abbf@sentry.io/1433178",
+    #dsn = str(os.environ.get('DSN')),
     integrations=[DjangoIntegration()]
 )
 
@@ -57,6 +58,7 @@ SERVER_EMAIL = str(os.environ.get('EMAIL_HOST_USER'))
 
 INSTALLED_APPS = [
 
+    #'debug_toolbar', #comment out before upload to heroku
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -74,6 +76,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    #'debug_toolbar.middleware.DebugToolbarMiddleware', #comment out before upload to heroku
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -159,3 +162,4 @@ STATICFILES_DIRS = [
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 django_heroku.settings(locals())
+#INTERNAL_IPS = ['127.0.0.1', 'localhost'] #comment out before upload to heroku

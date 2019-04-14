@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <meta charset="UTF-8">
 
     {% block extra_head %}
     {% endblock %}
@@ -28,6 +29,7 @@
                 <a class="nav-link" href="{% url "tasks:create" %}">Добавить задачу</a>
                 <a class="nav-link" href="{% url "tasks:list" %}">Задачи <span class="badge badge-danger">{%not_completed user.tasks.all%}</span>/<span class="badge badge-warning">{{user.tasks.count}}</span></a>
                 <a class="nav-link" href="{% url "tasks:import" %}">Импорт</a>
+                <a class="nav-link" href="{% url "tasks:index" %}">Подсчет тэгов и приоритетов</a>
                 <a class="nav-link" href="{% url "tasks:api_error" %}">Получить ошибку</a>
                 <a class="nav-link" href="{% url "logout" %}">Выйти</a>
               </nav>
