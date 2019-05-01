@@ -14,11 +14,12 @@ import os
 import django_heroku
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
-
+import local
 
 
 sentry_sdk.init(
-    dsn = str(os.environ.get('DSN')),
+    # dsn = str(os.environ.get('DSN')),
+    dsn = local.dsn
     integrations=[DjangoIntegration()]
 )
 
@@ -30,10 +31,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = str(os.environ.get('SECRET_KEY'))
+# SECRET_KEY = str(os.environ.get('SECRET_KEY'))
+SECRET_KEY = local.secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = local.debug
 
 ALLOWED_HOSTS = []
 
@@ -42,12 +45,15 @@ LOGIN_REDIRECT_URL = "tasks:list"
 
 
 EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_HOST_USER = str(os.environ.get('EMAIL_HOST_USER'))
-EMAIL_HOST_PASSWORD = str(os.environ.get('EMAIL_HOST_PASSWORD'))
+# EMAIL_HOST_USER = str(os.environ.get('EMAIL_HOST_USER'))
+# EMAIL_HOST_PASSWORD = str(os.environ.get('EMAIL_HOST_PASSWORD'))
+EMAIL_HOST_USER = local.email_host_user
+EMAIL_HOST_PASSWORD = local.email_host_password
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = str('Сайт.ру <%s>' % (os.environ.get('EMAIL_HOST_USER')))
-SERVER_EMAIL = str(os.environ.get('EMAIL_HOST_USER'))
+# SERVER_EMAIL = str(os.environ.get('EMAIL_HOST_USER'))
+SERVER_EMAIL = local.email_host_user
 
 
 
