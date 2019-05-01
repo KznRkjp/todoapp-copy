@@ -19,7 +19,7 @@ import local
 
 sentry_sdk.init(
     # dsn = str(os.environ.get('DSN')),
-    dsn = local.dsn
+    dsn = local.dsn,
     integrations=[DjangoIntegration()]
 )
 
